@@ -40,17 +40,17 @@ void setup() {
   delay(3000); // let serial start
 
   // initialize odometry
-  isok = mowbotOdometry.init(LOG_LEVEL_VERBOSE);
+  isok = mowbotOdometry.init(LOG_LEVEL_INFO);
   delay(1000);      // wait for startup messages from mowbotOdometry object to get printed
 
   // initialize RL500CommsTask
-  isok = rl500CommsTask.init(LOG_LEVEL_VERBOSE);
+  isok = rl500CommsTask.init(LOG_LEVEL_INFO);
   delay(1000);    // wait for startup messages from rl500CommsTask to get printed
   if (isok)
     rl500CommsTask.rlCommsLog_.infoln("Successfully initialized rl500CommsTask and RL500");
 
   // initialize piLink
-  isok = piLink.init(LOG_LEVEL_VERBOSE);
+  isok = piLink.init(LOG_LEVEL_INFO);
   if (!isok)
   {
     Serial.println("piXfer init() failed");
@@ -61,5 +61,5 @@ void setup() {
 
 void loop() {
   piLink.linkLog_.infoln("MowbotRealtime in loop()");
-  delay(2000);
+  delay(10000);
 }
