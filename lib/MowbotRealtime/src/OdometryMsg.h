@@ -1,6 +1,8 @@
 #pragma once
 
 struct OdometryMsg {
+  int32_t seq;
+  TickType_t espTimestamp;
   float poseX_m;
   float poseY_m;
   float heading_rad;
@@ -14,4 +16,6 @@ struct OdometryMsg {
 
   int leftEncoderCount;
   int rightEncoderCount;
+  float leftWheelAngle_rad;
+  float rightWheelAngle_rad;
 };

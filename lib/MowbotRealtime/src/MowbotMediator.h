@@ -18,13 +18,14 @@ public:
                 RL500CommsTask& rl500CommsTask,
                 PiLink& piLink,
                 TxLog& txLog,
-                TxOdometry& txOdometry,
-                RxDriveMotorsRqst& rxDriveMotorsRqst
+                TxOdometry& txOdometry
                 );
   void setWheelDirections(bool leftFwd, bool rightFwd);
   void sendLogMsg(char* logMsg, int length);
-  void setDrive(int8_t leftDrivePct, int8_t rightDrivePct);
+  void setDrive(int32_t seq, float linear_vel, float angular_vel);
   void publishOdometry(OdometryMsg odom);
+  void setLogLvl(int32_t pilinkLogLevel, int32_t rl500LogLevel, int32_t odomLogLevel);
+  void publishPlatformData(PlatformDataMsg platformData);
 
 private:
   MowbotOdometry& mowbotOdometry_;
@@ -32,7 +33,6 @@ private:
   PiLink& piLink_;
   TxLog& txLog_;
   TxOdometry& txOdometry_;
-  RxDriveMotorsRqst& rxDriveMotorsRqst_;
 
   // OdomMediator variables
   int lastLeftEncCnt_ = 0;       // last received encoder count
