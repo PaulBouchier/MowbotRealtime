@@ -52,6 +52,7 @@ void setup() {
 
   Serial.begin(115200);
   delay(3000); // let serial start
+  Serial.println("ESP32 setup() starting");
 
   // Uncomment to print stack info
   // Serial.printf("\r\n\r\nAddress of Stackpointer near start is:  %p \r\n",  (void *)StackPtrAtStart);
