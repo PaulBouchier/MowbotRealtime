@@ -9,4 +9,6 @@ struct PlatformDataMsg {
   float rightMps;       // requested right speed m/s
   int32_t leftPct;      // requested left percent power
   int32_t rightPct;     // requested right percent power
+  float commandedLinear;  // last commanded linear speed
+  float commandedAngular; // last commanded angular speed
 };

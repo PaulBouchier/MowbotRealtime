@@ -13,4 +13,5 @@ public:
   virtual void publishOdometry(OdometryMsg odom) = 0;
   virtual void setLogLvl(int32_t pilinkLogLevel, int32_t rl500LogLevel, int32_t odomLogLevel) = 0;
   virtual void publishPlatformData(PlatformDataMsg platformData) = 0;
+  virtual void setRL500BITMode() = 0;
 };

@@ -1,6 +1,7 @@
 #include <MowbotMediator.h>
 
 // globals
+extern RxBITMode rxBITMode;
 extern RxDriveMotorsRqst rxDriveMotorsRqst;
 extern RxLogLevel rxLogLevel;
 extern TxPlatformData txPlatformData;
@@ -23,6 +24,7 @@ MowbotMediator::MowbotMediator(
   piLink_.setMediator(this);
   rxDriveMotorsRqst.setMediator(this);
   rxLogLevel.setMediator(this);
+  rxBITMode.setMediator(this);
 }
 
 void
@@ -53,6 +55,12 @@ MowbotMediator::setDrive(int32_t seq, float linear_vel, float angular_vel)
 {
   piLink_.linkLog_.traceln("MowbotMediator got setDrive seq: %d left: %f right: %f", seq, linear_vel, angular_vel);
   rl500CommsTask_.setDrive(seq, linear_vel, angular_vel);
+}
+
+void
+MowbotMediator::setRL500BITMode()
+{
+  rl500CommsTask_.setBITMode();
 }
 
 void
