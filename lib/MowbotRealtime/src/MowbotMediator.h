@@ -24,6 +24,7 @@ public:
   void sendLogMsg(char* logMsg, int length);
   void setDrive(int32_t seq, float linear_vel, float angular_vel);
   void publishOdometry(OdometryMsg odom);
+  void clearOdometry();
   void setLogLvl(int32_t pilinkLogLevel, int32_t rl500LogLevel, int32_t odomLogLevel);
   void publishPlatformData(PlatformDataMsg platformData);
   void setRL500BITMode();

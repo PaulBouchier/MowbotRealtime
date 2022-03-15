@@ -2,6 +2,7 @@
 
 // globals
 extern RxBITMode rxBITMode;
+extern RxClearOdom rxClearOdom;
 extern RxDriveMotorsRqst rxDriveMotorsRqst;
 extern RxLogLevel rxLogLevel;
 extern TxPlatformData txPlatformData;
@@ -22,9 +23,10 @@ MowbotMediator::MowbotMediator(
   mowbotOdometry_.setMediator(this);
   rl500CommsTask_.setMediator(this);
   piLink_.setMediator(this);
+  rxBITMode.setMediator(this);
+  rxClearOdom.setMediator(this);
   rxDriveMotorsRqst.setMediator(this);
   rxLogLevel.setMediator(this);
-  rxBITMode.setMediator(this);
 }
 
 void
@@ -36,6 +38,12 @@ MowbotMediator::publishOdometry(OdometryMsg odom)
     lastRightEncCnt_ = odom.rightEncoderCount;
   }
   txOdometry_.post(odom);
+}
+
+void
+MowbotMediator::clearOdometry()
+{
+  mowbotOdometry_.clearOdometry();
 }
 
 void
