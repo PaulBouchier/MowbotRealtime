@@ -6,6 +6,7 @@ struct OdometryMsg {
   float poseX_m;
   float poseY_m;
   float heading_rad;
+  float odom_heading_rad;
   float speedX_mps;
   float speedY_mps;
   float linear_speed_mps;
@@ -18,4 +19,5 @@ struct OdometryMsg {
   int rightEncoderCount;
   float leftWheelAngle_rad;
   float rightWheelAngle_rad;
+  int IMUCalStatus;
 };
