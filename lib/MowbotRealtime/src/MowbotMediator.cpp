@@ -32,11 +32,6 @@ MowbotMediator::MowbotMediator(
 void
 MowbotMediator::publishOdometry(OdometryMsg odom)
 {
-  if (odom.leftEncoderCount != lastLeftEncCnt_ || odom.rightEncoderCount != lastRightEncCnt_)
-  {
-    lastLeftEncCnt_ = odom.leftEncoderCount;
-    lastRightEncCnt_ = odom.rightEncoderCount;
-  }
   txOdometry_.post(odom);
 }
 

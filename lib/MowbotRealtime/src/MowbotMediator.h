@@ -36,8 +36,4 @@ private:
   TxLog& txLog_;
   TxOdometry& txOdometry_;
 
-  // OdomMediator variables
-  int lastLeftEncCnt_ = 0;       // last received encoder count
-  int lastRightEncCnt_ = 0;      // last received encoder count
-
 };
