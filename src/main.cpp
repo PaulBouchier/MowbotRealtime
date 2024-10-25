@@ -57,19 +57,9 @@ void setup() {
   Serial.println("ESP32 setup() starting");
 
   // Uncomment to print stack info
-  // Serial.printf("\r\n\r\nAddress of Stackpointer near start is:  %p \r\n",  (void *)StackPtrAtStart);
-  // Serial.printf("End of Stack is near: %p \r\n",  (void *)StackPtrEnd);
-  // Serial.printf("Free Stack near start is:  %d \r\n",  (uint32_t)StackPtrAtStart - (uint32_t)StackPtrEnd);
-
-  // initialize odometry
-  isok = mowbotOdometry.init(LOG_LEVEL_INFO);
-  delay(1000);      // wait for startup messages from mowbotOdometry object to get printed
-
-  // initialize RL500CommsTask
-  isok = rl500CommsTask.init(LOG_LEVEL_INFO);
-  delay(1000);    // wait for startup messages from rl500CommsTask to get printed
-  if (isok)
-    rl500CommsTask.rlCommsLog_.infoln("Successfully initialized rl500CommsTask and RL500");
+  Serial.printf("\r\n\r\nAddress of Stackpointer near start is:  %p \r\n",  (void *)StackPtrAtStart);
+  Serial.printf("End of Stack is near: %p \r\n",  (void *)StackPtrEnd);
+  Serial.printf("Free Stack near start is:  %d \r\n",  (uint32_t)StackPtrAtStart - (uint32_t)StackPtrEnd);
 
   // initialize piLink
   isok = piLink.init(LOG_LEVEL_INFO);
@@ -77,7 +67,26 @@ void setup() {
   {
     Serial.println("piXfer init() failed");
   }
+  Serial.println("Finished piLink.init");
 
+  // initialize RL500CommsTask
+  isok = rl500CommsTask.init(LOG_LEVEL_INFO);
+  delay(1000);    // wait for startup messages from rl500CommsTask to get printed
+  if (isok)
+  {
+    rl500CommsTask.rlCommsLog_.infoln("Successfully initialized rl500CommsTask and RL500");
+  }
+  Serial.print("rl500CommsTask init returned:");
+  Serial.print(isok);
+  Serial.println();
+
+  // initialize odometry
+  Serial.println("Beginning mowbotOdometry.init");
+  isok = mowbotOdometry.init(LOG_LEVEL_INFO, NULL);
+  delay(1000);      // wait for startup messages from mowbotOdometry object to get printed
+  Serial.println("Finished mowbotOdometry.init");
+
+  Serial.println("Mowbot main() finished setup");
   piLink.linkLog_.infoln("Mowbot main() finished setup");
 }
 
