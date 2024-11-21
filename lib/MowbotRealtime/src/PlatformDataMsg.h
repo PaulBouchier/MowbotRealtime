@@ -11,4 +11,5 @@ struct PlatformDataMsg {
   int32_t rightPct;     // requested right percent power
   float commandedLinear;  // last commanded linear speed
   float commandedAngular; // last commanded angular speed
+  int32_t bumperPressed;  // true if any bumpers are pressed
 };
